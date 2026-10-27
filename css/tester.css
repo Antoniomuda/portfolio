@@ -191,3 +191,102 @@ h1 {
 .verde {
   background-color: #1f9a4b;
 }
+
+.resultado {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.resultado h2 {
+  font-size: 28px;
+  font-weight: 700;
+}
+.pasos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.paso {
+  flex: 1 1 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  background-color: #fff;
+  border: 2px solid #1d1d1d;
+  border-radius: 18px;
+}
+.ojo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #1d1d1d;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.5em;
+}
+
+.paso label {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.paso select {
+  appearance: none;
+  padding: 10px 16px;
+  border: 2px solid #1d1d1d;
+  border-radius: 999px;
+  background-color: #fff;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.paso select:focus-visible {
+  outline: 3px solid #d9262b;
+  outline-offset: 2px;
+}
+
+.mensaje {
+  padding: 12px 16px;
+  border-left: 6px solid #1d1d1d;
+  background-color: #f4f3ef;
+  border-radius: 0 12px 12px 0;
+}
+.mensaje:empty {
+  display: none;
+}
+
+.mensaje[data-nivel="bien"] {
+  border-left-color: #1f9a4b;
+}
+
+.mensaje[data-nivel="regular"] {
+  border-left-color: #e0a526;
+}
+.mensaje[data-nivel="revision"] {
+  border-left-color: #d9262b;
+}
+.nota {
+  font-size: 14px;
+  opacity: 0.75;
+}
+.controles button {
+  padding: 8px 16px;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  background-color: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.controles button:hover,
+.controles button:focues-visible {
+  background-color: #fff;
+  color: #1d1d1d;
+}

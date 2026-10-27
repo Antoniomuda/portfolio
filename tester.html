@@ -26,7 +26,7 @@
     </header>
 
     <main id="cuerpo">
-      <h1>Lee la primera línea, por favor.</h1>
+      <h1>Vamos a ver qué tal ves...</h1>
       <p>
         Escribe lo que quieras en la primera línea y juega con la letra, el
         tamaño y el grosor. A ver hasta dónde llegas leyendo.
@@ -67,7 +67,9 @@
             </p>
           </div>
           <div>
-            <button type="reset" id="limpiar" name="limpiar">Reset</button>
+            <button type="button" id="reiniciar" name="reiniciar">
+              Reiniciar
+            </button>
           </div>
         </div>
 
@@ -124,6 +126,92 @@
         </div>
       </div>
 
+      <section class="resultado">
+        <h2>¿Hasta dónde llegas?</h2>
+        <p>
+          Primero cada ojo por separado y luego los dos juntos, como en la
+          consulta.
+        </p>
+        <div class="pasos">
+          <div class="paso">
+            <span class="ojo" aria-hidden="true">OD</span>
+
+            <p>
+              Tápate ahora el ojo izquierdo, no lo guiñes, tápalo con la palma
+              de la mano (no aprietes).
+            </p>
+            <label for="linea-derecha"
+              >La última línea que lees sin esfuerzo con el ojo derecho</label
+            >
+            <select name="linea-derecha" id="linea-derecha">
+              <option value="">Elige una línea</option>
+              <option value="0.1">0,1</option>
+              <option value="0.2">0,2</option>
+              <option value="0.3">0,3</option>
+              <option value="0.4">0,4</option>
+              <option value="0.5">0,5</option>
+              <option value="0.6">0,6</option>
+              <option value="0.7">0,7</option>
+              <option value="0.8">0,8</option>
+              <option value="0.9">0,9</option>
+              <option value="1.0">1,0</option>
+            </select>
+            <p id="mensaje-derecho" class="mensaje" role="status"></p>
+          </div>
+          <div class="paso">
+            <span class="ojo" aria-hidden="true">OI</span>
+            <p>
+              Tápate primero el ojo derecho, no lo guiñes, tápalo con la palma
+              de la mano (no aprietes).
+            </p>
+            <label for="linea-izquierda"
+              >La última línea que lees sin esfuerzo con el ojo
+              izquierdo</label
+            >
+            <select name="linea-izquierda" id="linea-izquierda">
+              <option value="">Elige una línea</option>
+              <option value="0.1">0,1</option>
+              <option value="0.2">0,2</option>
+              <option value="0.3">0,3</option>
+              <option value="0.4">0,4</option>
+              <option value="0.5">0,5</option>
+              <option value="0.6">0,6</option>
+              <option value="0.7">0,7</option>
+              <option value="0.8">0,8</option>
+              <option value="0.9">0,9</option>
+              <option value="1.0">1,0</option>
+            </select>
+            <p id="mensaje-izquierdo" class="mensaje" role="status"></p>
+          </div>
+
+          <div class="paso">
+            <span class="ojo" aria-hidden="true">AO</span>
+
+            <p>Ahora con los dos ojos abiertos, no tapes ni guiñes ninguno.</p>
+            <label for="linea"
+              >La última línea que lees sin esfuerzo con ambos ojos
+              abiertos</label
+            >
+            <select name="linea" id="linea">
+              <option value="">Elige una línea</option>
+              <option value="0.1">0,1</option>
+              <option value="0.2">0,2</option>
+              <option value="0.3">0,3</option>
+              <option value="0.4">0,4</option>
+              <option value="0.5">0,5</option>
+              <option value="0.6">0,6</option>
+              <option value="0.7">0,7</option>
+              <option value="0.8">0,8</option>
+              <option value="0.9">0,9</option>
+              <option value="1.0">1,0</option>
+            </select>
+            <p id="mensaje" class="mensaje" role="status"></p>
+          </div>
+        </div>
+        <p class="nota">
+          Este test es orientativo y no sustituye una revisión visual.
+        </p>
+      </section>
       <section class="duocromo">
         <h2>Test duocromo</h2>
         <div class="duocromo-mitades" aria-hidden="true">
