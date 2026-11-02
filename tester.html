@@ -130,14 +130,14 @@
         <h2>¿Hasta dónde llegas?</h2>
         <p>
           Primero cada ojo por separado y luego los dos juntos, como en la
-          consulta.
+          consulta. Sigue las instrucciones...
         </p>
         <div class="pasos">
           <div class="paso">
             <span class="ojo" aria-hidden="true">OD</span>
 
             <p>
-              Tápate ahora el ojo izquierdo, no lo guiñes, tápalo con la palma
+              Tápate primero el ojo izquierdo, no lo guiñes, tápalo con la palma
               de la mano (no aprietes).
             </p>
             <label for="linea-derecha"
@@ -161,12 +161,11 @@
           <div class="paso">
             <span class="ojo" aria-hidden="true">OI</span>
             <p>
-              Tápate primero el ojo derecho, no lo guiñes, tápalo con la palma
-              de la mano (no aprietes).
+              Tápate ahora el ojo derecho, no lo guiñes, tápalo con la palma de
+              la mano (no aprietes).
             </p>
             <label for="linea-izquierda"
-              >La última línea que lees sin esfuerzo con el ojo
-              izquierdo</label
+              >La última línea que lees sin esfuerzo con el ojo izquierdo</label
             >
             <select name="linea-izquierda" id="linea-izquierda">
               <option value="">Elige una línea</option>
@@ -211,6 +210,31 @@
         <p class="nota">
           Este test es orientativo y no sustituye una revisión visual.
         </p>
+      </section>
+      <section class="opticas">
+        <h2>Óptica cerca de ti</h2>
+        <p>
+          Buscar a partir de tu ubicación o escribe un código postal o la
+          dirección que quieras:
+        </p>
+
+        <div class="buscadores">
+          <button type="button" id="ubicacion">Usar mi ubicación</button>
+
+          <form id="buscar-direccion">
+            <label for="direccion">Código postal o dirección</label>
+            <input
+              type="text"
+              id="direccion"
+              name="direccion"
+              autocomplete="postal-code"
+            />
+            <button type="submit">Buscar</button>
+          </form>
+        </div>
+        <p id="estado-opticas" role="status"></p>
+        <ol id="lista-opticas" class="lista-opticas"></ol>
+        <div id="mapa" class="mapa"></div>
       </section>
       <section class="duocromo">
         <h2>Test duocromo</h2>
