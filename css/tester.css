@@ -290,3 +290,127 @@ h1 {
   background-color: #fff;
   color: #1d1d1d;
 }
+
+/* ---------- Ópticas cercanas ---------- */
+.opticas {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.opticas h2 {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+/* Buscadores */
+.buscadores {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 24px;
+}
+.buscadores form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.buscadores label {
+  flex-basis: 100%;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+.buscadores input {
+  padding: 10px 16px;
+  border: 2px solid #1d1d1d;
+  border-radius: 999px;
+  background-color: #fff;
+  color: inherit;
+  font: inherit;
+}
+.buscadores button {
+  padding: 10px 20px;
+  border: 2px solid #1d1d1d;
+  border-radius: 999px;
+  background-color: #1d1d1d;
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.buscadores button:hover,
+.buscadores button:focus-visible {
+  background-color: #fff;
+  color: #1d1d1d;
+}
+.buscadores input:focus-visible,
+.buscadores button:focus-visible {
+  outline: 3px solid #d9262b;
+  outline-offset: 2px;
+}
+
+#estado-opticas {
+  font-weight: 700;
+}
+#estado-opticas:empty,
+.mapa:empty {
+  display: none;
+}
+
+/* Lista */
+.lista-opticas {
+  list-style: none;
+  counter-reset: optica;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: 16px;
+}
+.lista-opticas li {
+  counter-increment: optica;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  column-gap: 16px;
+  padding: 16px 20px;
+  background-color: #fff;
+  border: 2px solid #1d1d1d;
+  border-radius: 18px;
+}
+.lista-opticas li:not(:has(.optica-direccion)) strong {
+  grid-row: 1 / span 2;
+}
+.lista-opticas li::before {
+  content: counter(optica);
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #1d1d1d;
+  color: #fff;
+  font-weight: 700;
+}
+.lista-opticas strong {
+  grid-column: 2;
+}
+.optica-direccion {
+  grid-column: 2;
+  font-size: 15px;
+  opacity: 0.75;
+}
+.optica-distancia {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+  padding: 4px 12px;
+  border: 2px solid #1d1d1d;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}

@@ -107,11 +107,12 @@ const estadoOpticas = document.getElementById("estado-opticas");
 const botonUbicacion = document.getElementById("ubicacion");
 
 function buscarOpticas(lat, lon) {
-  estadoOpticas.textContent = "Buscando ópticas cerca…";
+  estadoOpticas.textContent =
+    "Buscando ópticas cerca (esta operación puede tardar unos segudos, ten paciencia)…";
 
   const consulta = `[out:json][timeout:25];
-    nwr["shop"="optician"](around:33000,${lat},${lon});
-    out center 20;`;
+    nwr["shop"="optician"](around:3000,${lat},${lon});
+    out center;`;
 
   fetch("https://overpass-api.de/api/interpreter", {
     method: "POST",
@@ -126,8 +127,6 @@ function buscarOpticas(lat, lon) {
     .then(function (datos) {
       const opticas = prepararOpticas(datos.elements, lat, lon);
       mostrarOpticas(opticas);
-      estadoOpticas.textContent =
-        "Hemos encontrado " + datos.elements.length + " ópticas.";
     })
     .catch(function (error) {
       console.log(error);
@@ -146,7 +145,7 @@ botonUbicacion.addEventListener("click", function () {
       buscarOpticas(lat, lon);
     },
     function (error) {
-      console.lot(error.code, error.message);
+      console.log(error.code, error.message);
       estadoOpticas.textContent =
         "No hemos podido saber dónde estás. Prueba con tu código postal.";
     },
@@ -195,7 +194,7 @@ function prepararOpticas(elementos, lat, lon) {
     return a.distancia - b.distancia;
   });
 
-  return opticas;
+  return opticas.slice(0, 10);
 }
 
 function formatoDistancia(metros) {
@@ -211,7 +210,7 @@ const listaOpticas = document.getElementById("lista-opticas");
 function mostrarOpticas(opticas) {
   listaOpticas.textContent = "";
   if (opticas.length === 0) {
-    estadoOpticas.textContent = "No hemos encontrado ópticas a menos de 3 km";
+    estadoOpticas.textContent = "No hemos encontrado ópticas a menos de 3 km.";
     return;
   }
 
@@ -229,14 +228,65 @@ function mostrarOpticas(opticas) {
         textoDireccion = textoDireccion + " " + optica.numero;
       }
       const direccion = document.createElement("span");
+      direccion.className = "optica-direccion";
       direccion.textContent = textoDireccion;
       li.append(direccion);
     }
 
     const distancia = document.createElement("span");
-    distancia.textContent = formatoDistancia(optica.distancia);
+    distancia.className = "optica-distancia";
+    distancia.textContent = " " + formatoDistancia(optica.distancia);
     li.append(distancia);
 
     listaOpticas.append(li);
   });
 }
+
+// a partir de aqui uso Nominatim para convertir el texto de la dirección introducida por
+// el usuario en coordenadas.
+
+function buscarDireccion(texto) {
+  estadoOpticas.textContent = "Buscando la dirección…";
+
+  const parametros = new URLSearchParams({
+    q: texto,
+    format: "json",
+    limit: 1,
+    countrycodes: "es",
+  });
+
+  fetch("https://nominatim.openstreetmap.org/search?" + parametros)
+    .then(function (respuesta) {
+      if (!respuesta.ok) {
+        throw new Error("Nominatim ha respondido " + respuesta.status);
+      }
+      return respuesta.json();
+    })
+    .then(function (resultados) {
+      if (resultados.length === 0) {
+        estadoOpticas.textContent =
+          "No encontramos esa dirección. Prueba con otro código postal.";
+        return;
+      }
+      const lat = Number(resultados[0].lat);
+      const lon = Number(resultados[0].lon);
+      buscarOpticas(lat, lon);
+    })
+    .catch(function (error) {
+      console.log(error);
+      estadoOpticas.textContent =
+        "Ahora mismo no podemos buscar direcciones. Prueba en un rato.";
+    });
+}
+
+const formularioDireccion = document.getElementById("buscar-direccion");
+const direccion = document.getElementById("direccion");
+formularioDireccion.addEventListener("submit", function (evento) {
+  evento.preventDefault();
+  const texto = direccion.value.trim();
+  if (texto === "") {
+    estadoOpticas.textContent = "Escribe un código postal o una dirección.";
+    return;
+  }
+  buscarDireccion(texto);
+});

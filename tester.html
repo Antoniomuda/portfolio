@@ -28,8 +28,11 @@
     <main id="cuerpo">
       <h1>Vamos a ver qué tal ves...</h1>
       <p>
-        Escribe lo que quieras en la primera línea y juega con la letra, el
-        tamaño y el grosor. A ver hasta dónde llegas leyendo.
+        Si quieres jugar con la aplicación, puedes escribir en la primera fila y
+        cambiar su tamaño y grosor con los controles. <br />Ahora, si lo que
+        quieres es evaluar tu salud visual de forma interactiva y aproximada
+        (Recuerda que lo adecuado es que lo evalúe un profesional en
+        consulta),sigue las instrucciones para cada test...
       </p>
 
       <div class="consulta">
@@ -126,6 +129,23 @@
         </div>
       </div>
 
+      <section class="duocromo">
+        <h2>Test duocromo</h2>
+        <div class="duocromo-mitades" aria-hidden="true">
+          <p class="rojo">HOLA</p>
+          <p class="verde">HOLA</p>
+        </div>
+        <p>
+          <!-- la pregunta y una explicación corta, escrita por ti como óptico -->
+        </p>
+      </section>
+      <section class="rejilla-amsler">
+        <h2>Rejilla Amsler</h2>
+        <div class="rejilla" aria-hidden="true"></div>
+        <p>
+          <!-- la pregunta y una explicación corta, escrita por ti como óptico -->
+        </p>
+      </section>
       <section class="resultado">
         <h2>¿Hasta dónde llegas?</h2>
         <p>
@@ -235,16 +255,6 @@
         <p id="estado-opticas" role="status"></p>
         <ol id="lista-opticas" class="lista-opticas"></ol>
         <div id="mapa" class="mapa"></div>
-      </section>
-      <section class="duocromo">
-        <h2>Test duocromo</h2>
-        <div class="duocromo-mitades" aria-hidden="true">
-          <p class="rojo">HOLA</p>
-          <p class="verde">HOLA</p>
-        </div>
-        <p>
-          <!-- la pregunta y una explicación corta, escrita por ti como óptico -->
-        </p>
       </section>
     </main>
   </body>
