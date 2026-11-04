@@ -1,3 +1,9 @@
+const respuestas = {
+  agudeza: { od: "", oi: "", ao: "" },
+  duocromo: { od: "", oi: "" },
+  amsler: { od: "", oi: "" },
+};
+
 const panel = document.querySelector(".panel");
 const tamano = document.getElementById("tamano");
 const valorTamano = document.getElementById("valor-tamano");
@@ -62,44 +68,227 @@ function evaluar(select, parrrafo) {
 
 lineaDerecha.addEventListener("input", function () {
   evaluar(lineaDerecha, mensajeDerecho);
+  respuestas.agudeza.od = lineaDerecha.value;
 });
 
 lineaIzquierda.addEventListener("input", function () {
   evaluar(lineaIzquierda, mensajeIzquierdo);
+  respuestas.agudeza.oi = lineaIzquierda.value;
 });
 
 linea.addEventListener("input", function () {
   evaluar(linea, mensaje);
-  if (linea.value != "" && Number(linea.value) < 0.5) {
+  respuestas.agudeza.ao = linea.value;
+
+  if (linea.value !== "" && Number(linea.value) < 0.5) {
     mensaje.textContent +=
-      " Ten en cuenta que para renovar el permiso de conducir es necesario una agudeza visual superior a 0,5 con ambos ojos abiertos.";
+      " Ten en cuenta que para renovar el permiso de conducir es necesario una agudeza visual igual o superior a 0,5 con ambos ojos abiertos.";
   }
 });
 
+// Botón Reiniciar: devuelve el mando a sus valores iniciales y borra todas las respuestas
 const reiniciar = document.getElementById("reiniciar");
 const filaTexto = document.querySelector(".fila-texto[contenteditable]");
-const texto = "E F P T O";
+const textoInicial = filaTexto.textContent;
 
 reiniciar.addEventListener("click", function () {
-  tamano.value = 96;
-  panel.style.removeProperty("--muestra-tamano");
+  // El mando
+  tamano.value = tamano.defaultValue;
   valorTamano.textContent = tamano.value;
-  mensajeIzquierdo.textContent = "";
-  mensajeDerecho.textContent = "";
-  mensaje.textContent = "";
-  lineaDerecha.value = "";
-  lineaIzquierda.value = "";
-  linea.value = "";
-
-  grosor.value = 400;
-  panel.style.removeProperty("--muestra-peso");
+  grosor.value = grosor.defaultValue;
   valorGrosor.textContent = grosor.value;
-
   fuente.value = "Space Grotesk";
+  panel.style.removeProperty("--muestra-tamano");
+  panel.style.removeProperty("--muestra-peso");
   panel.style.removeProperty("--muestra-fuente");
+  filaTexto.textContent = textoInicial;
 
-  filaTexto.textContent = texto;
+  // Todas las respuestas
+  document.querySelectorAll(".paso select").forEach(function (select) {
+    select.value = "";
+  });
+  document.querySelectorAll(".paso .mensaje").forEach(function (parrafo) {
+    parrafo.textContent = "";
+    delete parrafo.dataset.nivel;
+  });
+  respuestas.agudeza = { od: "", oi: "", ao: "" };
+  respuestas.duocromo = { od: "", oi: "" };
+  respuestas.amsler = { od: "", oi: "" };
 });
+// funcion duocromo
+
+function textoDuocromo(color) {
+  if (color === "rojo") {
+    return "Ves mejor sobre el rojo. Puede indicar algo de miopía sin corregir, o que tus gafas se quedan cortas si ya eres miope.";
+  } else if (color === "verde") {
+    return "Ves mejor sobre el verde. Puede indicar algo de hipermetropía sin corregir, o que tus gafas se pasan de graduación si eres miope.";
+  } else if (color === "igual") {
+    return "Lo ves igual en los dos fondos: buena señal, el enfoque parece equilibrado.";
+  }
+  return "";
+}
+
+function nivelDuocromo(color) {
+  if (color === "igual") {
+    return "bien";
+  }
+  return "regular";
+}
+
+const duocromoDerecho = document.getElementById("duocromo-derecho");
+const mensajeDuocromoDerecho = document.getElementById(
+  "mensaje-duocromo-derecho",
+);
+
+duocromoDerecho.addEventListener("input", function () {
+  respuestas.duocromo.od = duocromoDerecho.value;
+  mensajeDuocromoDerecho.textContent = textoDuocromo(duocromoDerecho.value);
+  mensajeDuocromoDerecho.dataset.nivel = nivelDuocromo(duocromoDerecho.value);
+});
+
+const duocromoIzquierdo = document.getElementById("duocromo-izquierdo");
+const mensajeDuocromoIzquierdo = document.getElementById(
+  "mensaje-duocromo-izquierdo",
+);
+
+duocromoIzquierdo.addEventListener("input", function () {
+  respuestas.duocromo.oi = duocromoIzquierdo.value;
+  mensajeDuocromoIzquierdo.textContent = textoDuocromo(duocromoIzquierdo.value);
+  mensajeDuocromoIzquierdo.dataset.nivel = nivelDuocromo(
+    duocromoIzquierdo.value,
+  );
+});
+
+// Rejilla de Amsler
+function textoAmsler(respuesta) {
+  if (respuesta === "si") {
+    return "No te alarmes, pero actúa rápido: que la rejilla se vea mal no significa que te vayas a quedar ciego, pero sí que necesitas que un especialista te revise lo antes posible.";
+  } else if (respuesta === "no") {
+    return "Todo recto: buena señal. Repite la prueba de vez en cuando, sobre todo a partir de los 50.";
+  }
+  return "";
+}
+
+function nivelAmsler(respuesta) {
+  if (respuesta === "si") {
+    return "revision";
+  }
+  return "bien";
+}
+
+const amslerDerecho = document.getElementById("amsler-derecho");
+const mensajeAmslerDerecho = document.getElementById("mensaje-amsler-derecho");
+
+amslerDerecho.addEventListener("input", function () {
+  respuestas.amsler.od = amslerDerecho.value;
+  mensajeAmslerDerecho.textContent = textoAmsler(amslerDerecho.value);
+  mensajeAmslerDerecho.dataset.nivel = nivelAmsler(amslerDerecho.value);
+});
+
+const amslerIzquierdo = document.getElementById("amsler-izquierdo");
+const mensajeAmslerIzquierdo = document.getElementById(
+  "mensaje-amsler-izquierdo",
+);
+
+amslerIzquierdo.addEventListener("input", function () {
+  respuestas.amsler.oi = amslerIzquierdo.value;
+  mensajeAmslerIzquierdo.textContent = textoAmsler(amslerIzquierdo.value);
+  mensajeAmslerIzquierdo.dataset.nivel = nivelAmsler(amslerIzquierdo.value);
+});
+
+// resumen
+
+const resumen = document.getElementById("resumen");
+const nombresOjos = {
+  od: "Ojo derecho",
+  oi: "Ojo izquierdo",
+  ao: "Los dos ojos",
+};
+
+function crearBloque(titulo) {
+  const bloque = document.createElement("div");
+  bloque.className = "bloque-resumen";
+  const encabezado = document.createElement("h3");
+  encabezado.textContent = titulo;
+  bloque.append(encabezado);
+  resumen.append(bloque);
+  return bloque;
+}
+
+function anadirLinea(bloque, ojo, texto, nivel) {
+  const parrafo = document.createElement("p");
+  parrafo.className = "mensaje";
+  if (nivel) {
+    parrafo.dataset.nivel = nivel;
+  }
+  parrafo.textContent = nombresOjos[ojo] + ": " + texto;
+  bloque.append(parrafo);
+}
+
+function mostrarResumen() {
+  resumen.textContent = "";
+
+  // Agudeza visual
+  const bloqueAgudeza = crearBloque("Agudeza visual");
+  ["od", "oi", "ao"].forEach(function (ojo) {
+    const valor = respuestas.agudeza[ojo];
+    if (valor === "") {
+      anadirLinea(bloqueAgudeza, ojo, "sin responder", "");
+      return;
+    }
+    const agudeza = Number(valor);
+    anadirLinea(
+      bloqueAgudeza,
+      ojo,
+      valor.replace(".", ",") + ". " + textoSegun(agudeza),
+      nivelSegun(agudeza),
+    );
+  });
+
+  // Duocromo
+  const bloqueDuocromo = crearBloque("Duocromo");
+  ["od", "oi"].forEach(function (ojo) {
+    const valor = respuestas.duocromo[ojo];
+    if (valor === "") {
+      anadirLinea(bloqueDuocromo, ojo, "sin responder", "");
+      return;
+    }
+    anadirLinea(
+      bloqueDuocromo,
+      ojo,
+      textoDuocromo(valor),
+      nivelDuocromo(valor),
+    );
+  });
+
+  // Rejilla de Amsler
+  const bloqueAmsler = crearBloque("Rejilla de Amsler");
+  ["od", "oi"].forEach(function (ojo) {
+    const valor = respuestas.amsler[ojo];
+    if (valor === "") {
+      anadirLinea(bloqueAmsler, ojo, "sin responder", "");
+      return;
+    }
+    anadirLinea(bloqueAmsler, ojo, textoAmsler(valor), nivelAmsler(valor));
+  });
+
+  // Consejos, solo si algún ojo ve deformaciones
+  if (respuestas.amsler.od === "si" || respuestas.amsler.oi === "si") {
+    const bloqueConsejos = crearBloque("📝 Consejos mientras esperas la cita");
+    const lista = document.createElement("ul");
+    [
+      "Haz la prueba todos los días, para ver si el problema cambia, empeora o se mantiene igual.",
+      "Si usas gafas para leer, póntelas siempre para hacer la prueba.",
+      "Hazla a unos 30–40 centímetros de distancia y con buena luz.",
+      "No mires a los lados: clava la mirada en el punto central y nota las distorsiones «de reojo».",
+    ].forEach(function (consejo) {
+      const item = document.createElement("li");
+      item.textContent = consejo;
+      lista.append(item);
+    });
+    bloqueConsejos.append(lista);
+  }
+}
 
 /* para la parte de geolocalización y preguntar donde esté el usuario */
 
@@ -289,4 +478,48 @@ formularioDireccion.addEventListener("submit", function (evento) {
     return;
   }
   buscarDireccion(texto);
+});
+//funcion para ocultar y mostrar pruebas, pestañas
+
+// Pestañas de pruebas
+const botonesPrueba = document.querySelectorAll(".recorrido button");
+const secciones = document.querySelectorAll(".prueba");
+
+function mostrarPrueba(nombre) {
+  secciones.forEach(function (seccion) {
+    if (seccion.id === nombre) {
+      seccion.hidden = false;
+    } else {
+      seccion.hidden = true;
+    }
+  });
+
+  botonesPrueba.forEach(function (boton) {
+    if (boton.dataset.prueba === nombre) {
+      boton.setAttribute("aria-expanded", "true");
+    } else {
+      boton.setAttribute("aria-expanded", "false");
+    }
+  });
+  if (nombre === "resultado") {
+    mostrarResumen();
+  }
+}
+
+botonesPrueba.forEach(function (boton) {
+  boton.addEventListener("click", function () {
+    mostrarPrueba(boton.dataset.prueba);
+  });
+});
+
+mostrarPrueba("agudeza");
+
+// Gestión del boton siguiente para navegar entre test
+const botonesSiguiente = document.querySelectorAll(".siguiente");
+
+botonesSiguiente.forEach(function (boton) {
+  boton.addEventListener("click", function () {
+    mostrarPrueba(boton.dataset.ir);
+    window.scrollTo(0, 0);
+  });
 });

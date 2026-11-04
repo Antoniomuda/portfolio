@@ -3,11 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Optotipo tipográfico" />
+    <meta
+      name="description"
+      content="Un optotipo tipográfico para jugar con letras, tamaños y grosores, y una revisión visual orientativa paso a paso: agudeza visual, duocromo, rejilla de Amsler y ópticas cercanas."
+    />
     <title>Optotipo tipográfico · Antonio M.</title>
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/tokens.css" />
-    <link href="css/tester.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/tester.css" />
 
     <script defer src="js/script.js"></script>
     <script defer src="js/tester.js"></script>
@@ -15,150 +18,212 @@
 
   <body class="tester">
     <a href="#cuerpo" class="saltar">Saltar al contenido</a>
+
     <header class="barra">
-      <a href="index.html"
-        ><img
-          src="assets/logo.svg"
-          alt="Antonio Murillo, inicio"
-          class="barra-logo"
-      /></a>
+      <a href="index.html" class="barra-logo">Antonio M.</a>
       <a href="laboratorio.html">← Laboratorio</a>
     </header>
 
     <main id="cuerpo">
-      <h1>Vamos a ver qué tal ves...</h1>
+      <h1>Vamos a ver qué tal ves</h1>
       <p>
-        Si quieres jugar con la aplicación, puedes escribir en la primera fila y
-        cambiar su tamaño y grosor con los controles. <br />Ahora, si lo que
-        quieres es evaluar tu salud visual de forma interactiva y aproximada
-        (Recuerda que lo adecuado es que lo evalúe un profesional en
-        consulta),sigue las instrucciones para cada test...
+        Tienes dos opciones: jugar con las letras o hacerte una revisión rápida.
+        Tú eliges.
+      </p>
+      <p>
+        Si prefieres la revisión, haz las pruebas en orden y registra tus
+        respuestas en cada una. Al final verás un resumen orientativo. Ten en
+        cuenta que no sustituye a una revisión de un profesional en consulta.
       </p>
 
-      <div class="consulta">
-        <div class="controles">
-          <div>
-            <label for="fuente">Tipo de letra</label>
-            <select name="fuente" id="fuente">
-              <option value="Fraunces">Fraunces</option>
-              <option value="Syne">Syne</option>
-              <option value="Bricolage Grotesque">Bricolage Grotesque</option>
-              <option value="Pixelify">Pixelify</option>
-              <option value="Atkinson">Atkinson</option>
-              <option value="Space Grotesk" selected>Space Grotesk</option>
-            </select>
-          </div>
-          <div>
-            <label for="tamano">Tamaño</label>
-            <input type="range" id="tamano" min="16" max="200" value="96" />
-            <p class="valor">
-              <output id="valor-tamano" for="tamano">96</output> px
-            </p>
-          </div>
-          <div>
-            <label for="grosor">Grosor</label>
-            <input
-              type="range"
-              id="grosor"
-              min="100"
-              max="900"
-              step="100"
-              value="400"
-            />
-            <p class="valor">
-              <output id="valor-grosor" for="grosor">400</output>
-            </p>
-          </div>
-          <div>
-            <button type="button" id="reiniciar" name="reiniciar">
-              Reiniciar
+      <nav class="recorrido" aria-label="Pruebas de la revisión">
+        <ol>
+          <li>
+            <button
+              type="button"
+              data-prueba="agudeza"
+              aria-controls="agudeza"
+              aria-expanded="true"
+            >
+              Agudeza visual
             </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              data-prueba="duocromo"
+              aria-controls="duocromo"
+              aria-expanded="false"
+            >
+              Duocromo
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              data-prueba="amsler"
+              aria-controls="amsler"
+              aria-expanded="false"
+            >
+              Rejilla de Amsler
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              data-prueba="resultado"
+              aria-controls="resultado"
+              aria-expanded="false"
+            >
+              Resultado
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              data-prueba="opticas"
+              aria-controls="opticas"
+              aria-expanded="false"
+            >
+              Ópticas cercanas
+            </button>
+          </li>
+        </ol>
+      </nav>
+
+      <!-- 1. Agudeza visual -->
+      <section id="agudeza" class="prueba">
+        <h2>Test de agudeza visual</h2>
+        <p>
+          Si quieres jugar, escribe en la primera fila del optotipo y cambia la
+          letra, el tamaño y el grosor con el mando.
+        </p>
+        <p>
+          Si quieres que la prueba sea más o menos fiable, sigue estas
+          instrucciones:
+        </p>
+        <ol class="instrucciones">
+          <li>
+            Pon el navegador en pantalla completa. Lo ideal es una pantalla de
+            unas 21 pulgadas.
+          </li>
+          <li>
+            Deja los controles de tamaño y grosor en sus valores iniciales.
+          </li>
+          <li>
+            Aléjate unos 50 centímetros de la pantalla: extiende el brazo y toca
+            la pantalla con la punta de los dedos. No hagas trampa, que te veo.
+          </li>
+          <li>
+            Registra tus resultados de cada ojo en las fichas que están debajo
+            del optotipo.
+          </li>
+        </ol>
+
+        <div class="consulta">
+          <div class="controles">
+            <div>
+              <label for="fuente">Tipo de letra</label>
+              <select name="fuente" id="fuente">
+                <option value="Space Grotesk" selected>Space Grotesk</option>
+                <option value="Fraunces">Fraunces</option>
+                <option value="Syne">Syne</option>
+                <option value="Bricolage Grotesque">Bricolage Grotesque</option>
+                <option value="Pixelify">Pixelify</option>
+                <option value="Atkinson">Atkinson</option>
+              </select>
+            </div>
+            <div>
+              <label for="tamano">Tamaño</label>
+              <input type="range" id="tamano" min="16" max="240" value="150" />
+              <p class="valor">
+                <output id="valor-tamano" for="tamano">150</output> px
+              </p>
+            </div>
+            <div>
+              <label for="grosor">Grosor</label>
+              <input
+                type="range"
+                id="grosor"
+                min="100"
+                max="900"
+                step="100"
+                value="400"
+              />
+              <p class="valor">
+                <output id="valor-grosor" for="grosor">400</output>
+              </p>
+            </div>
+            <div>
+              <button type="button" id="reiniciar">Reiniciar</button>
+            </div>
+          </div>
+
+          <div class="panel">
+            <ol class="filas">
+              <li>
+                <span
+                  class="fila-texto"
+                  contenteditable="true"
+                  role="textbox"
+                  aria-label="Texto de prueba, puedes editarlo"
+                  spellcheck="false"
+                  >E F P T O</span
+                >
+                <span class="agudeza">0,1</span>
+              </li>
+              <li aria-hidden="true">
+                <span class="fila-texto">N S B C</span
+                ><span class="agudeza">0,2</span>
+              </li>
+              <li aria-hidden="true">
+                <span class="fila-texto">A T R E</span
+                ><span class="agudeza">0,3</span>
+              </li>
+              <li aria-hidden="true">
+                <span class="fila-texto">D P M T</span
+                ><span class="agudeza">0,4</span>
+              </li>
+              <li aria-hidden="true">
+                <span class="fila-texto">A L M R</span
+                ><span class="agudeza">0,5</span>
+              </li>
+              <li aria-hidden="true">
+                <span class="fila-texto">H T M L</span
+                ><span class="agudeza">0,6</span>
+              </li>
+              <li aria-hidden="true">
+                <span class="fila-texto">R C O S</span
+                ><span class="agudeza">0,7</span>
+              </li>
+              <li aria-hidden="true">
+                <span class="fila-texto">T U O P</span
+                ><span class="agudeza">0,8</span>
+              </li>
+              <li aria-hidden="true">
+                <span class="fila-texto">C S L A</span
+                ><span class="agudeza">0,9</span>
+              </li>
+              <li aria-hidden="true">
+                <span class="fila-texto">U I W X</span
+                ><span class="agudeza">1,0</span>
+              </li>
+            </ol>
           </div>
         </div>
 
-        <div class="panel">
-          <ol class="filas">
-            <li>
-              <span
-                class="fila-texto"
-                contenteditable="true"
-                role="textbox"
-                aria-label="Texto de prueba, puedes editarlo"
-                spellcheck="false"
-                >E F P T O</span
-              >
-              <span class="agudeza">0,1</span>
-            </li>
-            <li aria-hidden="true">
-              <span class="fila-texto">N S B C</span>
-              <span class="agudeza">0,2</span>
-            </li>
-            <li aria-hidden="true">
-              <span class="fila-texto">A T R E</span>
-              <span class="agudeza">0,3</span>
-            </li>
-            <li aria-hidden="true">
-              <span class="fila-texto">D P M T</span>
-              <span class="agudeza">0,4</span>
-            </li>
-            <li aria-hidden="true">
-              <span class="fila-texto">A L M R</span>
-              <span class="agudeza">0,5</span>
-            </li>
-            <li aria-hidden="true">
-              <span class="fila-texto">H T M L</span>
-              <span class="agudeza">0,6</span>
-            </li>
-            <li aria-hidden="true">
-              <span class="fila-texto">R C O S</span>
-              <span class="agudeza">0,7</span>
-            </li>
-            <li aria-hidden="true">
-              <span class="fila-texto">T U O P</span>
-              <span class="agudeza">0,8</span>
-            </li>
-            <li aria-hidden="true">
-              <span class="fila-texto">C S L A</span>
-              <span class="agudeza">0,9</span>
-            </li>
-            <li aria-hidden="true">
-              <span class="fila-texto">U I W X</span>
-              <span class="agudeza">1,0</span>
-            </li>
-          </ol>
-        </div>
-      </div>
-
-      <section class="duocromo">
-        <h2>Test duocromo</h2>
-        <div class="duocromo-mitades" aria-hidden="true">
-          <p class="rojo">HOLA</p>
-          <p class="verde">HOLA</p>
-        </div>
-        <p>
-          <!-- la pregunta y una explicación corta, escrita por ti como óptico -->
-        </p>
-      </section>
-      <section class="rejilla-amsler">
-        <h2>Rejilla Amsler</h2>
-        <div class="rejilla" aria-hidden="true"></div>
-        <p>
-          <!-- la pregunta y una explicación corta, escrita por ti como óptico -->
-        </p>
-      </section>
-      <section class="resultado">
-        <h2>¿Hasta dónde llegas?</h2>
+        <h3>¿Hasta dónde llegas?</h3>
         <p>
           Primero cada ojo por separado y luego los dos juntos, como en la
-          consulta. Sigue las instrucciones...
+          consulta.
         </p>
+
         <div class="pasos">
           <div class="paso">
             <span class="ojo" aria-hidden="true">OD</span>
-
             <p>
-              Tápate primero el ojo izquierdo, no lo guiñes, tápalo con la palma
-              de la mano (no aprietes).
+              Tápate el ojo izquierdo con la palma de la mano, sin apretar y sin
+              guiñarlo.
             </p>
             <label for="linea-derecha"
               >La última línea que lees sin esfuerzo con el ojo derecho</label
@@ -178,11 +243,12 @@
             </select>
             <p id="mensaje-derecho" class="mensaje" role="status"></p>
           </div>
+
           <div class="paso">
             <span class="ojo" aria-hidden="true">OI</span>
             <p>
-              Tápate ahora el ojo derecho, no lo guiñes, tápalo con la palma de
-              la mano (no aprietes).
+              Ahora tápate el ojo derecho, también con la palma, sin apretar y
+              sin guiñarlo.
             </p>
             <label for="linea-izquierda"
               >La última línea que lees sin esfuerzo con el ojo izquierdo</label
@@ -205,11 +271,12 @@
 
           <div class="paso">
             <span class="ojo" aria-hidden="true">AO</span>
-
-            <p>Ahora con los dos ojos abiertos, no tapes ni guiñes ninguno.</p>
+            <p>
+              Por último, con los dos ojos abiertos, sin tapar ni guiñar
+              ninguno.
+            </p>
             <label for="linea"
-              >La última línea que lees sin esfuerzo con ambos ojos
-              abiertos</label
+              >La última línea que lees sin esfuerzo con los dos ojos</label
             >
             <select name="linea" id="linea">
               <option value="">Elige una línea</option>
@@ -227,15 +294,203 @@
             <p id="mensaje" class="mensaje" role="status"></p>
           </div>
         </div>
+
         <p class="nota">
           Este test es orientativo y no sustituye una revisión visual.
         </p>
+
+        <button type="button" class="siguiente" data-ir="duocromo">
+          Siguiente: test duocromo →
+        </button>
       </section>
-      <section class="opticas">
-        <h2>Óptica cerca de ti</h2>
+
+      <!-- 2. Duocromo -->
+      <section id="duocromo" class="duocromo prueba">
+        <h2>Test duocromo</h2>
         <p>
-          Buscar a partir de tu ubicación o escribe un código postal o la
-          dirección que quieras:
+          Esta prueba da una pista orientativa de si podrías ser miope o
+          hipermétrope.
+        </p>
+        <p>Sigue estas instrucciones:</p>
+        <ol class="instrucciones">
+          <li>
+            Pon el navegador en pantalla completa. Lo ideal es una pantalla de
+            unas 21 pulgadas.
+          </li>
+          <li>
+            Aléjate unos 50 centímetros de la pantalla: extiende el brazo y toca
+            la pantalla con la punta de los dedos.
+          </li>
+          <li>
+            Fíjate en qué fondo ves la palabra «HOLA» más negra y nítida, con
+            más contraste.
+          </li>
+          <li>Apunta lo que ves con cada ojo en las fichas de debajo.</li>
+        </ol>
+
+        <div class="duocromo-mitades" aria-hidden="true">
+          <p class="rojo">HOLA</p>
+          <p class="verde">HOLA</p>
+        </div>
+
+        <div class="pasos">
+          <div class="paso">
+            <span class="ojo" aria-hidden="true">OD</span>
+            <p>
+              Tápate el ojo izquierdo con la palma de la mano, sin apretar y sin
+              guiñarlo.
+            </p>
+            <label for="duocromo-derecho"
+              >Fondo en el que lo ves más nítido con el ojo derecho</label
+            >
+            <select name="duocromo-derecho" id="duocromo-derecho">
+              <option value="">Elige un color</option>
+              <option value="rojo">Rojo</option>
+              <option value="verde">Verde</option>
+              <option value="igual">Igual en los dos</option>
+            </select>
+            <p id="mensaje-duocromo-derecho" class="mensaje" role="status"></p>
+          </div>
+
+          <div class="paso">
+            <span class="ojo" aria-hidden="true">OI</span>
+            <p>
+              Ahora tápate el ojo derecho, también con la palma, sin apretar y
+              sin guiñarlo.
+            </p>
+            <label for="duocromo-izquierdo"
+              >Fondo en el que lo ves más nítido con el ojo izquierdo</label
+            >
+            <select name="duocromo-izquierdo" id="duocromo-izquierdo">
+              <option value="">Elige un color</option>
+              <option value="rojo">Rojo</option>
+              <option value="verde">Verde</option>
+              <option value="igual">Igual en los dos</option>
+            </select>
+            <p
+              id="mensaje-duocromo-izquierdo"
+              class="mensaje"
+              role="status"
+            ></p>
+          </div>
+        </div>
+
+        <button type="button" class="siguiente" data-ir="amsler">
+          Siguiente: rejilla de Amsler →
+        </button>
+      </section>
+
+      <!-- 3. Rejilla de Amsler -->
+      <section id="amsler" class="amsler prueba">
+        <h2>Rejilla de Amsler</h2>
+        <p>
+          Con este último test vamos a buscar alteraciones en la mácula, la zona
+          central de la retina. Sirve para detectar a tiempo la degeneración
+          macular asociada a la edad (DMAE), una de las principales causas de
+          ceguera en mayores de 50 años. Al principio no da síntomas y, cuando
+          se pierde visión, esa pérdida es irreversible.
+        </p>
+        <p>Sigue estas instrucciones:</p>
+        <ol class="instrucciones">
+          <li>
+            Pon el navegador en pantalla completa. Lo ideal es una pantalla de
+            unas 21 pulgadas.
+          </li>
+          <li>
+            Aléjate unos 30 o 40 centímetros de la pantalla: una distancia de
+            lectura normal.
+          </li>
+          <li>
+            Si usas gafas de cerca (de leer), póntelas para hacer la prueba.
+          </li>
+          <li>
+            Con cada ojo por separado, mira fijamente el punto del centro de la
+            cuadrícula, sin mover los ojos, y fíjate en el resto de la
+            cuadrícula sin dejar de mirar el punto.
+          </li>
+          <li>Apunta lo que ves con cada ojo en las fichas de debajo.</li>
+        </ol>
+
+        <img
+          class="rejilla"
+          src="assets/img/amsler.webp"
+          alt="Rejilla de Amsler: una cuadrícula de líneas rectas con un punto en el centro."
+        />
+
+        <details class="casos">
+          <summary>Ver cómo se vería con una alteración</summary>
+          <img
+            src="assets/img/rejillaDefecto.png"
+            alt="Rejilla de Amsler vista por alguien con una alteración en la retina: líneas onduladas y una mancha en el centro."
+          />
+          <p>
+            Si con alguno de los dos ojos no ves rectas las líneas, faltan
+            trozos o ves manchas, acude a una óptica o a un centro especializado
+            para que te lo evalúen con más precisión.
+          </p>
+        </details>
+
+        <div class="pasos">
+          <div class="paso">
+            <span class="ojo" aria-hidden="true">OD</span>
+            <p>
+              Tápate el ojo izquierdo con la palma de la mano, sin apretar y sin
+              guiñarlo.
+            </p>
+            <label for="amsler-derecho"
+              >¿Ves alguna deformación con el ojo derecho?</label
+            >
+            <select name="amsler-derecho" id="amsler-derecho">
+              <option value="">Elige una respuesta</option>
+              <option value="no">No, todo recto</option>
+              <option value="si">Sí, líneas torcidas, huecos o manchas</option>
+            </select>
+            <p id="mensaje-amsler-derecho" class="mensaje" role="status"></p>
+          </div>
+
+          <div class="paso">
+            <span class="ojo" aria-hidden="true">OI</span>
+            <p>
+              Ahora tápate el ojo derecho, también con la palma, sin apretar y
+              sin guiñarlo.
+            </p>
+            <label for="amsler-izquierdo"
+              >¿Ves alguna deformación con el ojo izquierdo?</label
+            >
+            <select name="amsler-izquierdo" id="amsler-izquierdo">
+              <option value="">Elige una respuesta</option>
+              <option value="no">No, todo recto</option>
+              <option value="si">Sí, líneas torcidas, huecos o manchas</option>
+            </select>
+            <p id="mensaje-amsler-izquierdo" class="mensaje" role="status"></p>
+          </div>
+        </div>
+
+        <button type="button" class="siguiente" data-ir="resultado">
+          Ver mi resultado →
+        </button>
+      </section>
+
+      <!-- 4. Resultado -->
+      <section id="resultado" class="resultado prueba">
+        <h2>Tu resultado</h2>
+        <div id="resumen" class="resumen"></div>
+        <p class="nota">
+          Este resumen es orientativo y no es un diagnóstico. Si algo te
+          preocupa, pide cita con un profesional.
+        </p>
+
+        <button type="button" class="siguiente" data-ir="opticas">
+          Buscar ópticas cerca →
+        </button>
+      </section>
+
+      <!-- 5. Ópticas cercanas -->
+      <section id="opticas" class="opticas prueba">
+        <h2>Ópticas cerca de ti</h2>
+        <p>
+          Busca a partir de tu ubicación o escribe un código postal o una
+          dirección.
         </p>
 
         <div class="buscadores">
@@ -252,6 +507,7 @@
             <button type="submit">Buscar</button>
           </form>
         </div>
+
         <p id="estado-opticas" role="status"></p>
         <ol id="lista-opticas" class="lista-opticas"></ol>
         <div id="mapa" class="mapa"></div>

@@ -22,6 +22,9 @@
   padding: 16px clamp(16px, 5vw, 48px);
   border-bottom: 2px solid;
 }
+.barra-logo {
+  font-weight: 700;
+}
 .barra a {
   color: inherit;
   font-weight: 700;
@@ -413,4 +416,126 @@ h1 {
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
+}
+/* ---------- Recorrido de pruebas ---------- */
+.recorrido ol {
+  list-style: none;
+  counter-reset: prueba;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 4px;
+}
+.recorrido li {
+  counter-increment: prueba;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.recorrido li + li::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background-color: #1d1d1d;
+}
+.recorrido button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px 6px 6px;
+  border: 2px solid #1d1d1d;
+  border-radius: 999px;
+  background-color: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.recorrido button::before {
+  content: counter(prueba);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #1d1d1d;
+  color: #fff;
+}
+.recorrido button:hover,
+.recorrido button:focus-visible,
+.recorrido button[aria-expanded="true"] {
+  background-color: #1d1d1d;
+  color: #fff;
+}
+.recorrido button[aria-expanded="true"]::before {
+  background-color: #d9262b;
+}
+.recorrido button:focus-visible {
+  outline: 3px solid #d9262b;
+  outline-offset: 2px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.siguiente {
+  align-self: flex-end;
+  padding: 10px 20px;
+  border: 2px solid #1d1d1d;
+  border-radius: 999px;
+  background-color: #1d1d1d;
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.siguiente:hover,
+.siguiente:focus-visible {
+  background-color: #fff;
+  color: #1d1d1d;
+}
+.prueba {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.prueba h2 {
+  font-size: 28px;
+  font-weight: 700;
+}
+.prueba h3 {
+  font-size: 22px;
+  font-weight: 700;
+}
+.instrucciones {
+  padding-left: 1.2em;
+  max-width: 70ch;
+}
+.rejilla {
+  width: min(100%, 480px);
+  align-self: center;
+}
+.casos summary {
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.resumen {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.bloque-resumen {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px;
+  background-color: #fff;
+  border: 2px solid #1d1d1d;
+  border-radius: 18px;
+}
+.bloque-resumen ul {
+  padding-left: 1.2em;
 }
