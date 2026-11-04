@@ -164,6 +164,21 @@ h1 {
     top: 24px;
   }
 }
+@media (max-width: 600px) {
+  .barra p {
+    display: none;
+  }
+}
+@media (max-width: 600px) {
+  .recorrido li + li::before {
+    display: none;
+  }
+}
+@media (max-width: 600px) {
+  .filas li {
+    font-size: calc(var(--muestra-tamano, 150px) * var(--escala, 1) * 0.5);
+  }
+}
 
 /* ---------- Optotipo ---------- */
 .panel {
@@ -294,7 +309,7 @@ h1 {
   background-color: #1d1d1d;
   color: #fff;
   font-weight: 700;
-  letter-spacing: 0.5em;
+  letter-spacing: 0.05em;
 }
 
 .paso label {
