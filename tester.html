@@ -21,20 +21,61 @@
 
     <header class="barra">
       <a href="index.html" class="barra-logo">Antonio M.</a>
+      <p>Tester optométrico</p>
       <a href="laboratorio.html">← Laboratorio</a>
     </header>
 
     <main id="cuerpo">
-      <h1>Vamos a ver qué tal ves</h1>
-      <p>
-        Tienes dos opciones: jugar con las letras o hacerte una revisión rápida.
-        Tú eliges.
-      </p>
-      <p>
-        Si prefieres la revisión, haz las pruebas en orden y registra tus
-        respuestas en cada una. Al final verás un resumen orientativo. Ten en
-        cuenta que no sustituye a una revisión de un profesional en consulta.
-      </p>
+      <section id="inicio" class="prueba portada">
+        <h1>Vamos a ver qué tal ves</h1>
+        <p class="entradilla">
+          Tres pruebas rápidas, como en la consulta del óptico. Al final verás
+          un resumen y las ópticas más cercanas.
+        </p>
+
+        <h2>Antes de empezar</h2>
+        <ul class="requisitos">
+          <li><strong>5 minutos</strong> Es lo que se tarda.</li>
+          <li>
+            <strong>Pantalla completa</strong> Mejor en un ordenador, con una
+            pantalla de unas 21 pulgadas.
+          </li>
+          <li><strong>Buena luz</strong> Y sin reflejos en la pantalla.</li>
+          <li>
+            <strong
+              >Para la prueba de la Rejilla de Amsler, realízala con tus
+              gafas</strong
+            >
+            Si usas gafas o lentillas, déjatelas puestas.
+          </li>
+        </ul>
+
+        <h2>Qué vas a hacer</h2>
+        <ol class="lista-pruebas">
+          <li><strong>Agudeza visual</strong> Hasta qué línea lees.</li>
+          <li>
+            <strong>Duocromo</strong> Rojo o verde: una pista sobre tu
+            graduación.
+          </li>
+          <li>
+            <strong>Rejilla de Amsler</strong> Una cuadrícula para vigilar la
+            retina.
+          </li>
+        </ol>
+
+        <div class="grupo-botones">
+          <button type="button" class="siguiente" data-ir="agudeza">
+            Empezar la revisión →
+          </button>
+          <button type="button" class="siguiente secundario" data-ir="agudeza">
+            Solo quiero jugar con las letras
+          </button>
+        </div>
+
+        <p class="nota">
+          Es orientativa y no sustituye una revisión con un profesional.
+        </p>
+      </section>
 
       <nav class="recorrido" aria-label="Pruebas de la revisión">
         <ol>
@@ -93,32 +134,23 @@
 
       <!-- 1. Agudeza visual -->
       <section id="agudeza" class="prueba">
-        <h2>Test de agudeza visual</h2>
-        <p>
-          Si quieres jugar, escribe en la primera fila del optotipo y cambia la
-          letra, el tamaño y el grosor con el mando.
+        <h2>1 · Agudeza visual</h2>
+        <p class="distancia">
+          A unos 50 cm de la pantalla (una medida aproximada es, extendiendo el
+          brazo todo lo que puedas, y que la punta de tus dedos toquen la
+          pantalla.)
         </p>
         <p>
-          Si quieres que la prueba sea más o menos fiable, sigue estas
-          instrucciones:
+          Lee el optotipo de arriba abajo y apunta la última línea que lees sin
+          esfuerzo: primero con cada ojo y luego con los dos.
         </p>
-        <ol class="instrucciones">
-          <li>
-            Pon el navegador en pantalla completa. Lo ideal es una pantalla de
-            unas 21 pulgadas.
-          </li>
-          <li>
-            Deja los controles de tamaño y grosor en sus valores iniciales.
-          </li>
-          <li>
-            Aléjate unos 50 centímetros de la pantalla: extiende el brazo y toca
-            la pantalla con la punta de los dedos. No hagas trampa, que te veo.
-          </li>
-          <li>
-            Registra tus resultados de cada ojo en las fichas que están debajo
-            del optotipo.
-          </li>
-        </ol>
+        <details class="casos">
+          <summary>¿Solo quieres jugar?</summary>
+          <p>
+            Escribe en la primera fila y cambia la letra, el tamaño y el grosor
+            con el mando. Para hacer la prueba, deja el mando como está.
+          </p>
+        </details>
 
         <div class="consulta">
           <div class="controles">
@@ -306,28 +338,26 @@
 
       <!-- 2. Duocromo -->
       <section id="duocromo" class="duocromo prueba">
-        <h2>Test duocromo</h2>
-        <p>
-          Esta prueba da una pista orientativa de si podrías ser miope o
-          hipermétrope.
-        </p>
-        <p>Sigue estas instrucciones:</p>
-        <ol class="instrucciones">
-          <li>
-            Pon el navegador en pantalla completa. Lo ideal es una pantalla de
-            unas 21 pulgadas.
-          </li>
-          <li>
-            Aléjate unos 50 centímetros de la pantalla: extiende el brazo y toca
-            la pantalla con la punta de los dedos.
-          </li>
-          <li>
-            Fíjate en qué fondo ves la palabra «HOLA» más negra y nítida, con
-            más contraste.
-          </li>
-          <li>Apunta lo que ves con cada ojo en las fichas de debajo.</li>
-        </ol>
+        <h2>2 · Test duocromo</h2>
 
+        <p class="distancia">
+          A unos 50 cm de la pantalla (una medida aproximada es, extendiendo el
+          brazo todo lo que puedas, y que la punta de tus dedos toquen la
+          pantalla.)
+        </p>
+        <p>
+          Fíjate en qué fondo ves la palabra «HOLA» más negra y nítida, con más
+          contraste, sobre fondo ROJO o sobre fondo VERDE: con cada ojo por
+          separado, no con los dos abiertos.
+        </p>
+
+        <details class="casos">
+          <summary>¿Para qué sirve esta prueba?</summary>
+          <p>
+            Esta prueba da una pista orientativa de si podrías ser miope o
+            hipermétrope.
+          </p>
+        </details>
         <div class="duocromo-mitades" aria-hidden="true">
           <p class="rojo">HOLA</p>
           <p class="verde">HOLA</p>
@@ -382,34 +412,25 @@
 
       <!-- 3. Rejilla de Amsler -->
       <section id="amsler" class="amsler prueba">
-        <h2>Rejilla de Amsler</h2>
-        <p>
-          Con este último test vamos a buscar alteraciones en la mácula, la zona
-          central de la retina. Sirve para detectar a tiempo la degeneración
-          macular asociada a la edad (DMAE), una de las principales causas de
-          ceguera en mayores de 50 años. Al principio no da síntomas y, cuando
-          se pierde visión, esa pérdida es irreversible.
+        <h2>3 · Rejilla de Amsler</h2>
+        <p class="distancia">
+          A unos 30 o 40 cm: una distancia de lectura cómoda.
         </p>
-        <p>Sigue estas instrucciones:</p>
-        <ol class="instrucciones">
-          <li>
-            Pon el navegador en pantalla completa. Lo ideal es una pantalla de
-            unas 21 pulgadas.
-          </li>
-          <li>
-            Aléjate unos 30 o 40 centímetros de la pantalla: una distancia de
-            lectura normal.
-          </li>
-          <li>
-            Si usas gafas de cerca (de leer), póntelas para hacer la prueba.
-          </li>
-          <li>
-            Con cada ojo por separado, mira fijamente el punto del centro de la
-            cuadrícula, sin mover los ojos, y fíjate en el resto de la
-            cuadrícula sin dejar de mirar el punto.
-          </li>
-          <li>Apunta lo que ves con cada ojo en las fichas de debajo.</li>
-        </ol>
+        <p>
+          Con cada ojo por separado, mira fijamente el punto del centro de la
+          cuadrícula, sin mover los ojos, y fíjate en el resto de la cuadrícula
+          sin dejar de mirar el punto.
+        </p>
+        <details class="casos">
+          <summary>¿Para qué sirve esa prueba?</summary>
+          <p>
+            Con este último test vamos a buscar alteraciones en la mácula, la
+            zona central de la retina. Sirve para detectar a tiempo la
+            degeneración macular asociada a la edad (DMAE), una de las
+            principales causas de ceguera en mayores de 50 años. Al principio no
+            da síntomas y, cuando se pierde visión, esa pérdida es irreversible.
+          </p>
+        </details>
 
         <img
           class="rejilla"

@@ -482,6 +482,7 @@ formularioDireccion.addEventListener("submit", function (evento) {
 //funcion para ocultar y mostrar pruebas, pestañas
 
 // Pestañas de pruebas
+const recorrido = document.querySelector(".recorrido");
 const botonesPrueba = document.querySelectorAll(".recorrido button");
 const secciones = document.querySelectorAll(".prueba");
 
@@ -501,6 +502,9 @@ function mostrarPrueba(nombre) {
       boton.setAttribute("aria-expanded", "false");
     }
   });
+
+  recorrido.hidden = nombre === "inicio";
+
   if (nombre === "resultado") {
     mostrarResumen();
   }
@@ -512,7 +516,7 @@ botonesPrueba.forEach(function (boton) {
   });
 });
 
-mostrarPrueba("agudeza");
+mostrarPrueba("inicio");
 
 // Gestión del boton siguiente para navegar entre test
 const botonesSiguiente = document.querySelectorAll(".siguiente");

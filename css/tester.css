@@ -1,3 +1,70 @@
+/* ---------- Portada ---------- */
+.entradilla {
+  font-size: clamp(20px, 2vw, 28px);
+  max-width: 40ch;
+}
+.requisitos,
+.lista-pruebas {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  gap: 16px;
+}
+.requisitos li,
+.lista-pruebas li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 20px;
+  background-color: #fff;
+  border: 2px solid #1d1d1d;
+  border-radius: 18px;
+}
+.lista-pruebas {
+  counter-reset: paso;
+}
+.lista-pruebas li {
+  counter-increment: paso;
+}
+.lista-pruebas li::before {
+  content: counter(paso);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 8px;
+  border-radius: 50%;
+  background-color: #1d1d1d;
+  color: #fff;
+  font-weight: 700;
+}
+.grupo-botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.portada .siguiente {
+  align-self: auto;
+}
+.siguiente.secundario {
+  background-color: transparent;
+  color: #1d1d1d;
+}
+.siguiente.secundario:hover,
+.siguiente.secundario:focus-visible {
+  background-color: #1d1d1d;
+  color: #fff;
+}
+.distancia {
+  align-self: flex-start;
+  padding: 4px 12px;
+  border: 2px solid #1d1d1d;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
 /* ---------- Base ---------- */
 .tester {
   background-color: #e8e7e3;
@@ -19,7 +86,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px clamp(16px, 5vw, 48px);
+  padding: var(--espacio-4) var(--margen-lateral);
   border-bottom: 2px solid;
 }
 .barra-logo {
@@ -36,9 +103,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 32px;
-  max-width: 1400px;
-  margin-inline: auto;
-  padding: 48px clamp(16px, 4vw, 48px);
+  padding: var(--espacio-4) var(--margen-lateral);
 }
 h1 {
   font-size: clamp(40px, 6vw, 80px);
@@ -508,6 +573,11 @@ h1 {
 .prueba h3 {
   font-size: 22px;
   font-weight: 700;
+}
+
+.prueba > p,
+.instrucciones {
+  max-width: 65ch;
 }
 .instrucciones {
   padding-left: 1.2em;
