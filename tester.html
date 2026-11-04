@@ -8,10 +8,21 @@
       content="Un optotipo tipográfico para jugar con letras, tamaños y grosores, y una revisión visual orientativa paso a paso: agudeza visual, duocromo, rejilla de Amsler y ópticas cercanas."
     />
     <title>Optotipo tipográfico · Antonio M.</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <link rel="stylesheet" href="css/tester.css" />
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/tokens.css" />
     <link rel="stylesheet" href="css/tester.css" />
 
+    <script
+      defer
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    ></script>
+    <script defer src="js/script.js"></script>
+    <script defer src="js/tester.js"></script>
     <script defer src="js/script.js"></script>
     <script defer src="js/tester.js"></script>
   </head>
@@ -525,7 +536,7 @@
 
         <p id="estado-opticas" role="status"></p>
         <ol id="lista-opticas" class="lista-opticas"></ol>
-        <div id="mapa" class="mapa"></div>
+        <div id="mapa" class="mapa" hidden></div>
       </section>
     </main>
   </body>

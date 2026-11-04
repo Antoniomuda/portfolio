@@ -437,9 +437,27 @@ h1 {
 #estado-opticas {
   font-weight: 700;
 }
-#estado-opticas:empty,
-.mapa:empty {
+#estado-opticas:empty {
   display: none;
+}
+
+.mapa {
+  height: clamp(320px, 50vh, 520px);
+  border: 2px solid #1d1d1d;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.marcador-optica {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background-color: #1d1d1d;
+  color: #fff;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
 }
 
 /* Lista */
@@ -467,7 +485,7 @@ h1 {
 .lista-opticas li::before {
   content: counter(optica);
   grid-column: 1;
-  grid-row: 1 / span 2;
+  grid-row: 1 / span 3;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -488,7 +506,7 @@ h1 {
 }
 .optica-distancia {
   grid-column: 3;
-  grid-row: 1 / span 2;
+  grid-row: 1 / span 3;
   padding: 4px 12px;
   border: 2px solid #1d1d1d;
   border-radius: 999px;
@@ -496,6 +514,14 @@ h1 {
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
+}
+
+.optica-mapa {
+  grid-column: 2;
+  font-size: 14px;
+  font-weight: 700;
+  color: inherit;
+  text-underline-offset: 4px;
 }
 /* ---------- Recorrido de pruebas ---------- */
 .recorrido ol {
