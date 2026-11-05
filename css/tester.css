@@ -460,6 +460,15 @@ h1 {
   font-weight: 700;
 }
 
+.leaflet-container {
+  font-family: "Space Grotesk", sans-serif;
+}
+.leaflet-container .popup-ruta {
+  display: block;
+  margin-top: 6px;
+  color: #1d1d1d;
+  font-weight: 700;
+}
 /* Lista */
 .lista-opticas {
   list-style: none;

@@ -432,15 +432,19 @@ function mostrarOpticas(opticas) {
     distancia.textContent = formatoDistancia(optica.distancia);
     li.append(distancia);
 
-    const enlace = document.createElement("button");
-    enlace.textContent = "Ver en el mapa";
-    enlace.className = "optica-mapa";
-    enlace.setAttribute("aria-label", "Ver " + optica.nombre + " en el mapa");
-    li.append(enlace);
+    const botonMapa = document.createElement("button");
+    botonMapa.type = "button";
+    botonMapa.textContent = "Ver en el mapa";
+    botonMapa.className = "optica-mapa";
+    botonMapa.setAttribute(
+      "aria-label",
+      "Ver " + optica.nombre + " en el mapa",
+    );
+    li.append(botonMapa);
 
     listaOpticas.append(li);
 
-    enlace.addEventListener("click", function () {
+    botonMapa.addEventListener("click", function () {
       verEnMapa(indice);
     });
   });
