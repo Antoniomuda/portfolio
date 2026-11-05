@@ -518,10 +518,29 @@ h1 {
 
 .optica-mapa {
   grid-column: 2;
+  justify-self: start;
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
   font-size: 14px;
   font-weight: 700;
-  color: inherit;
+  text-decoration: underline;
   text-underline-offset: 4px;
+  cursor: pointer;
+}
+
+.optica-mapa:focus-visible {
+  outline: 3px solid #d9262b;
+  outline-offset: 2px;
+}
+
+.popup-ruta {
+  display: block;
+  margin-top: 6px;
+  color: #1d1d1d;
+  font-weight: 700;
 }
 /* ---------- Recorrido de pruebas ---------- */
 .recorrido ol {

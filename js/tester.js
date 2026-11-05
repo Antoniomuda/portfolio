@@ -410,7 +410,7 @@ function mostrarOpticas(opticas) {
 
   estadoOpticas.textContent =
     "Hemos encontrado " + opticas.length + " ópticas a menos de 3 km.";
-  opticas.forEach(function (optica) {
+  opticas.forEach(function (optica, indice) {
     const li = document.createElement("li");
 
     const nombre = document.createElement("strong");
@@ -432,29 +432,24 @@ function mostrarOpticas(opticas) {
     distancia.textContent = formatoDistancia(optica.distancia);
     li.append(distancia);
 
-    const enlace = document.createElement("a");
-    enlace.href =
-      "https://www.openstreetmap.org/?mlat=" +
-      optica.lat +
-      "&mlon=" +
-      optica.lon +
-      "#map=19/" +
-      optica.lat +
-      "/" +
-      optica.lon;
+    const enlace = document.createElement("button");
     enlace.textContent = "Ver en el mapa";
     enlace.className = "optica-mapa";
-    enlace.target = "_blank";
     enlace.setAttribute("aria-label", "Ver " + optica.nombre + " en el mapa");
     li.append(enlace);
 
     listaOpticas.append(li);
+
+    enlace.addEventListener("click", function () {
+      verEnMapa(indice);
+    });
   });
 }
 
 // Mapa de ópticas con Leaflet
 const contenedorMapa = document.getElementById("mapa");
 let mapa = null;
+let marcadores = [];
 let capaMarcadores = null;
 
 function pintarMapa(opticas, lat, lon) {
@@ -473,6 +468,7 @@ function pintarMapa(opticas, lat, lon) {
 
   // Borra los marcadores de la búsqueda anterior
   capaMarcadores.clearLayers();
+  marcadores = [];
 
   // Tú: un punto rojo
   L.circleMarker([lat, lon], {
@@ -495,12 +491,35 @@ function pintarMapa(opticas, lat, lon) {
       iconSize: [32, 32],
     });
 
-    const popup = document.createElement("strong");
-    popup.textContent = optica.nombre;
+    const contenido = document.createElement("div");
 
-    L.marker([optica.lat, optica.lon], { icon: icono, title: optica.nombre })
-      .bindPopup(popup)
+    const titulo = document.createElement("strong");
+    titulo.textContent = optica.nombre;
+
+    const ruta = document.createElement("a");
+    ruta.href =
+      "https://www.openstreetmap.org/directions?engine=fossgis_osrm_foot&route=" +
+      lat +
+      "%2C" +
+      lon +
+      "%3B" +
+      optica.lat +
+      "%2C" +
+      optica.lon;
+    ruta.textContent = "Cómo llegar";
+    ruta.target = "_blank";
+    ruta.className = "popup-ruta";
+
+    contenido.append(titulo, ruta);
+
+    const marcador = L.marker([optica.lat, optica.lon], {
+      icon: icono,
+      title: optica.nombre,
+    })
+      .bindPopup(contenido)
       .addTo(capaMarcadores);
+
+    marcadores.push(marcador);
 
     puntos.push([optica.lat, optica.lon]);
   });
@@ -509,6 +528,27 @@ function pintarMapa(opticas, lat, lon) {
   mapa.fitBounds(puntos, { padding: [32, 32] });
   mapa.invalidateSize();
 }
+
+// funcion para que el mapa vuele
+const reducirMovimiento = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+function verEnMapa(indice) {
+  const marcador = marcadores[indice];
+  if (!marcador) {
+    return;
+  }
+
+  if (reducirMovimiento.matches) {
+    mapa.setView(marcador.getLatLng(), 18);
+    contenedorMapa.scrollIntoView({ block: "center" });
+  } else {
+    mapa.flyTo(marcador.getLatLng(), 18);
+    contenedorMapa.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
+  marcador.openPopup();
+}
+
 // a partir de aqui uso Nominatim para convertir el texto de la dirección introducida por
 // el usuario en coordenadas.
 
