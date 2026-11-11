@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Caso de estudio: juego de El ahorcado en PHP con MVC, login, 
+      niveles de dificultad y pistas por AJAX."
+    />
+    <title>El ahorcado · Antonio M.</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link href="css/main.css" rel="stylesheet" />
+
+    <script defer src="js/script.js"></script>
+    <script defer src="js/carrusel.js"></script>
+  </head>
+  <body>
+    <header>
+      <a href="#cuerpo" class="saltar">Saltar al contenido</a>
+      <a href="index.html"
+        ><img class="logo" src="assets/logo.svg" alt="Antonio Murillo, inicio"
+      /></a>
+
+      <nav>
+        <ul class="menu">
+          <li><a href="trabajo.html" aria-current="page">Trabajo</a></li>
+          <li><a href="laboratorio.html">Laboratorio</a></li>
+          <li><a href="sobre-mi.html">Sobre mí</a></li>
+          <li><a href="escribeme.html">Escríbeme</a></li>
+        </ul>
+      </nav>
+
+      <ul class="idiomas">
+        <li><a href="index.html">ES</a></li>
+        <li><a href="lang/ingles.html">EN</a></li>
+        <li><a href="lang/frances.html">FR</a></li>
+      </ul>
+    </header>
+
+    <main id="cuerpo">
+      <section class="seccion">
+        <div class="cabecera-seccion">
+          <h1>Tienda informática</h1>
+          <p>
+            Proyecto que desarrollé en la parte final de curso en la que
+            entregré la parte cliente y la parte servidor.
+          </p>
+        </div>
+
+        <div class="carrusel">
+          <div
+            class="galeria"
+            tabindex="0"
+            aria-label="Capturas de la aplicación del juego del Ahorcado"
+          >
+            <img
+              src="assets/img/informatica.webp"
+              alt="Página de inicio de la tienda de infom"
+            />
+
+            <img
+              src="assets/img/info1.webp"
+              alt="Página de búsqueda de clientes"
+            />
+
+            <img src="assets/img/info3.webp" alt="Catálogo de productos AJAX" />
+
+            <img
+              src="assets/img/info5.webp"
+              alt="Catálogo de productos por categoría, jQuery"
+            />
+            <img
+              src="assets/img/info6.webp"
+              alt="Panel de login de la tienda online"
+            />
+          </div>
+          <div class="carrusel-botones">
+            <button
+              type="button"
+              class="carrusel-anterior"
+              aria-label="Imagen anterior"
+            >
+              &larr;
+            </button>
+            <button
+              type="button"
+              class="carrusel-siguiente"
+              aria-label="Imagen siguiente"
+            >
+              &rarr;
+            </button>
+          </div>
+        </div>
+        <dl class="caso">
+          <div>
+            <dt>Resumen</dt>
+            <dd>
+              Cree una tienda de informática que une dos asignaturas del FP de
+              DAW: la parte de cliente (catálogo, clientes y buscador con AJAX)
+              y la parte de servidor (login, productos y valoraciones con PHP y
+              MySQL).
+            </dd>
+          </div>
+          <div>
+            <dt>El reto</dt>
+            <dd>
+              La tarea de cliente pedía cuatro páginas que consultaran APIs
+              públicas: dos en XML y dos en JSON, cada una con JavaScript puro y
+              con jQuery. Yo decidí darles forma de tienda: una portada con
+              categorías que abren el catálogo ya filtrado, un buscador en vivo
+              y opciones para ordenar y limitar los resultados. Después la uní
+              con la tarea de servidor: un login, los productos de la base de
+              datos y un sistema de valoraciones con estrellas.
+            </dd>
+          </div>
+          <div>
+            <dt>Stack</dt>
+
+            <dd>
+              <ul>
+                <li>HTML5 Y CSS3</li>
+                <li>Bootstrap</li>
+                <li>JavaScript con jQuery y AJAX</li>
+                <li>XML</li>
+                <li>JSON</li>
+                <li>PHP 8</li>
+                <li>Composer</li>
+                <li>BladeOne para las vistas</li>
+                <li>MySQL</li>
+              </ul>
+            </dd>
+          </div>
+          <div>
+            <dt>Una decisión</dt>
+
+            <dd>
+              <p>
+                Las valoraciones se guardan sin recargar la página. Al votar,
+                jQuery envía el voto a votos.php, que comprueba que no hayas
+                votado ya ese producto, lo guarda y devuelve la nueva media en
+                JSON. La tabla se actualiza al momento con las estrellas nuevas,
+                incluidas las medias estrellas.
+              </p>
+            </dd>
+          </div>
+          <div>
+            <dt>Lo que más me costó</dt>
+
+            <dd>
+              AJAX y jQuery. En su momento conseguí que funcionara, pero no
+              entendía del todo lo que pasaba entre la petición y la respuesta.
+              Lo entendí meses después, al construir un buscador de ópticas con
+              fetch para mi laboratorio. Ahí vi que era lo mismo con otra
+              sintaxis: pedir, esperar y pintar.
+            </dd>
+          </div>
+          <div>
+            <dt>Lo que hoy haría distinto</dt>
+            <dd>
+              <ul>
+                <li>
+                  Las contraseñas se guardan con sha256 sin sal. Hoy usaría
+                  password_hash y password_verify.
+                </li>
+                <li>
+                  El servidor no comprueba que el voto esté entre 1 y 5: se fía
+                  del formulario. Todo lo que llega del navegador hay que
+                  validarlo en el servidor.
+                </li>
+                <li>
+                  El catálogo pinta los datos de la API con innerHTML. Hoy
+                  crearía los elementos con createElement y textContent.
+                </li>
+                <li>
+                  La tabla de productos hace dos consultas por producto. Con un
+                  GROUP BY bastaría una sola.
+                </li>
+              </ul>
+            </dd>
+          </div>
+        </dl>
+        <div class="grupo-botones">
+          <a
+            href="https://github.com/Antoniomuda/tiendaInformatica"
+            target="_blank"
+            class="boton-principal"
+            >Ver repositorio de la tienda</a
+          >
+          <a href="trabajo.html">Volver a Trabajo</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 Antonio M.</p>
+      <p>Hecho a mano con HTML, CSS y JavaScript</p>
+      <ul class="idiomas">
+        <li><a href="index.html">ES</a></li>
+        <li><a href="lang/ingles.html">EN</a></li>
+        <li><a href="lang/frances.html">FR</a></li>
+      </ul>
+    </footer>
+  </body>
+</html>
