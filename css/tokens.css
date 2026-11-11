@@ -130,3 +130,13 @@
   --tamano-texto: 20px;
   --interlineado: 1.7;
 }
+.proximamente {
+  align-self: flex-start;
+  padding: var(--espacio-0) var(--espacio-1);
+  border: 1.5px dashed;
+  border-radius: var(--radio-pastilla);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+
