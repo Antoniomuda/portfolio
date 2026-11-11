@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Caso de estudio: juego de El ahorcado en PHP con MVC, login, 
+      content="Caso de estudio: tienda de informática en PHP con MVC, login, 
       niveles de dificultad y pistas por AJAX."
     />
-    <title>El ahorcado · Antonio M.</title>
+    <title>Tienda Informática · Antonio M.</title>
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/tokens.css" />
     <link href="css/main.css" rel="stylesheet" />
@@ -25,8 +25,10 @@
 
       <nav>
         <ul class="menu">
-          <li><a href="trabajo.html" aria-current="page">Trabajo</a></li>
-          <li><a href="laboratorio.html">Laboratorio</a></li>
+          <li><a href="trabajo.html">Trabajo</a></li>
+          <li>
+            <a href="laboratorio.html" aria-current="page">Laboratorio</a>
+          </li>
           <li><a href="sobre-mi.html">Sobre mí</a></li>
           <li><a href="escribeme.html">Escríbeme</a></li>
         </ul>
@@ -44,8 +46,9 @@
         <div class="cabecera-seccion">
           <h1>Tienda informática</h1>
           <p>
-            Proyecto que desarrollé en la parte final de curso en la que
-            entregré la parte cliente y la parte servidor.
+            El proyecto final de las asignaturas de cliente y servidor del FP:
+            una tienda que consulta APIs públicas y guarda valoraciones en su
+            propia base de datos
           </p>
         </div>
 
@@ -53,11 +56,11 @@
           <div
             class="galeria"
             tabindex="0"
-            aria-label="Capturas de la aplicación del juego del Ahorcado"
+            aria-label="Capturas de la tienda online de productos de informática"
           >
             <img
               src="assets/img/informatica.webp"
-              alt="Página de inicio de la tienda de infom"
+              alt="Página de inicio de la tienda de inforomática"
             />
 
             <img
@@ -97,9 +100,9 @@
           <div>
             <dt>Resumen</dt>
             <dd>
-              Cree una tienda de informática que une dos asignaturas del FP de
-              DAW: la parte de cliente (catálogo, clientes y buscador con AJAX)
-              y la parte de servidor (login, productos y valoraciones con PHP y
+              Una tienda de informática que une dos asignaturas del FP de DAW:
+              la parte de cliente (catálogo, clientes y buscador con AJAX) y la
+              parte de servidor (login, productos y valoraciones con PHP y
               MySQL).
             </dd>
           </div>
@@ -119,7 +122,7 @@
             <dt>Stack</dt>
 
             <dd>
-              <ul>
+              <ul class="etiquetas">
                 <li>HTML5 Y CSS3</li>
                 <li>Bootstrap</li>
                 <li>JavaScript con jQuery y AJAX</li>
@@ -138,10 +141,10 @@
             <dd>
               <p>
                 Las valoraciones se guardan sin recargar la página. Al votar,
-                jQuery envía el voto a votos.php, que comprueba que no hayas
-                votado ya ese producto, lo guarda y devuelve la nueva media en
-                JSON. La tabla se actualiza al momento con las estrellas nuevas,
-                incluidas las medias estrellas.
+                jQuery envía el voto a <code>votos.php</code> , que comprueba
+                que no hayas votado ya ese producto, lo guarda y devuelve la
+                nueva media en JSON. La tabla se actualiza al momento con las
+                estrellas nuevas, incluidas las medias estrellas.
               </p>
             </dd>
           </div>
@@ -152,8 +155,8 @@
               AJAX y jQuery. En su momento conseguí que funcionara, pero no
               entendía del todo lo que pasaba entre la petición y la respuesta.
               Lo entendí meses después, al construir un buscador de ópticas con
-              fetch para mi laboratorio. Ahí vi que era lo mismo con otra
-              sintaxis: pedir, esperar y pintar.
+              <code>fetch</code> para mi laboratorio. Ahí vi que era lo mismo
+              con otra sintaxis: pedir, esperar y pintar.
             </dd>
           </div>
           <div>
@@ -161,8 +164,9 @@
             <dd>
               <ul>
                 <li>
-                  Las contraseñas se guardan con sha256 sin sal. Hoy usaría
-                  password_hash y password_verify.
+                  Las contraseñas se guardan con <code>sha256</code> sin sal.
+                  Hoy usaría <code>password_hash </code>y
+                  <code>password_verify</code>.
                 </li>
                 <li>
                   El servidor no comprueba que el voto esté entre 1 y 5: se fía
@@ -170,12 +174,13 @@
                   validarlo en el servidor.
                 </li>
                 <li>
-                  El catálogo pinta los datos de la API con innerHTML. Hoy
-                  crearía los elementos con createElement y textContent.
+                  El catálogo pinta los datos de la API con
+                  <code>innerHTML</code>. Hoy crearía los elementos con
+                  <code>createElement</code> y <code>textContent</code>.
                 </li>
                 <li>
                   La tabla de productos hace dos consultas por producto. Con un
-                  GROUP BY bastaría una sola.
+                  <code>GROUP BY</code> bastaría una sola.
                 </li>
               </ul>
             </dd>
@@ -188,7 +193,7 @@
             class="boton-principal"
             >Ver repositorio de la tienda</a
           >
-          <a href="trabajo.html">Volver a Trabajo</a>
+          <a href="laboratorio.html">Volver a Laboratorio</a>
         </div>
       </section>
     </main>
