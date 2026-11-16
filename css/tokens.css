@@ -92,7 +92,8 @@
   --color-superficie: #f6a9c8;
   --color-tinta: #3a0d22;
   --color-acento: #e2264b;
-  --color-acento2: #ffffff;
+  --color-acento2: #e8a317;
+  --color-sobre-acento: #ffffff;
   --fuente-titulares: "Fraunces", serif;
   --peso-titulares: 900;
 }
@@ -101,7 +102,8 @@
   --color-superficie: #1c1ca6;
   --color-tinta: #ffffff;
   --color-acento: #ff6b2c;
-  --color-acento2: #0e0e5c;
+  --color-acento2: #ffd23f;
+  --color-sobre-acento: #0e0e5c;
   --fuente-titulares: "Pixelify", sans-serif;
   --peso-titulares: 700;
 }
@@ -111,6 +113,7 @@
   --color-tinta: #0d0d0d;
   --color-acento: #0d0d0d;
   --color-acento2: #f7e9d7;
+  --color-sobre-acento: #f7e9d7;
   --fuente-titulares: "Syne", sans-serif;
   --peso-titulares: 700;
 }
@@ -119,7 +122,8 @@
   --color-superficie: #164a31;
   --color-tinta: #fff3d6;
   --color-acento: #f5c518;
-  --color-acento2: #10301f;
+  --color-acento2: #4fa3e0;
+  --color-sobre-acento: #10301f;
   --fuente-titulares: "Bricolage Grotesque", sans-serif;
   --peso-titulares: 800;
 }

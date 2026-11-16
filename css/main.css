@@ -119,7 +119,7 @@ h1 {
   border: 2px solid var(--color-acento);
   text-decoration: none;
   cursor: pointer;
-  color: var(--color-acento2);
+  color: var(--color-sobre-acento);
 }
 
 .boton-secundario {
