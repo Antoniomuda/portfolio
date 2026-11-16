@@ -50,7 +50,9 @@ header {
   top: var(--espacio-2);
 }
 .logo {
-  width: 48px;
+  font-weight: 700;
+  text-decoration: none;
+  color: inherit;
 }
 
 .menu,
@@ -235,8 +237,7 @@ h2 {
   letter-spacing: -0.02em;
 }
 .correo {
-  font-size: clamp(20px, 2vw, 34px);
-  overflow-wrap: anywhere;
+  font-size: clamp(16px, 4.5vw, 32px);
 }
 
 .enlaces-contacto {
@@ -313,7 +314,7 @@ footer {
   font-weight: 700;
 }
 
-.error::before {
+.error:not(:empty)::before {
   content: "⚠ ";
 }
 
