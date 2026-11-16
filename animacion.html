@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="assets/reset.css" />
+    <link rel="stylesheet" href="assets/tokens.css" />
+  
+    <link rel="stylesheet" href="css/animacion.css" />
+       <link rel="stylesheet" href="css/tester.css">
+   
+
+  </head>
+  <body>
+    <div id="wrap">
+
+      <canvas id="c"></canvas>
+      <div id="blur-layer"></div>
+    </div>
+  <a href="laboratorio.html">← Laboratorio</a>
+     <div class="consulta">
+          <div class="controles">
+            <div>
+              <label for="fuente">Cambia color</label>
+              <select name="color" id="color">
+                <option value="red" selected>Rojo</option>
+                <option value="yellow">Amarillo</option>
+                <option value="pink">Rosa</option>
+                <option value="blue">Azul</option>
+                <option value="black">Negro</option>
+                <option value="green">Verde</option>
+              </select>
+            </div>
+            <div>
+              <label for="tamano">Tamaño</label>
+              <input type="range" id="tamano" min="16" max="240" value="150" />
+              <p class="valor">
+                <output id="valor-tamano" for="tamano">150</output> px
+              </p>
+            </div>
+            <div>
+              <label for="grosor">Borrosidad</label>
+              <input
+                type="range"
+                id="borrosidad"
+                min="100"
+                max="900"
+                step="100"
+                value="400"
+              />
+              <p class="valor">
+                <output id="valor-borrosidad" for="borrosidad">400</output>
+              </p>
+            </div>
+
+                <div>
+             
+              <button class="boton-principal" type="button" id="explota" >Explota globos</button>
+
+            </div>
+                <div>
+            
+              <button class="boton-principal" type="button" id="anade">Añade globos</button>
+            
+            </div>
+            <div>
+              <button type="button" id="reiniciar">Reiniciar</button>
+            </div>
+          </div>
+
+
+
+    <script src="js/animacion.js"></script>
+  </body>
+</html>

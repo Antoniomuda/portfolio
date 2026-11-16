@@ -634,6 +634,7 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  margin-top: var(--espacio-4);
 }
 .prueba h2 {
   font-size: 28px;

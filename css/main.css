@@ -357,6 +357,7 @@ dialog::backdrop {
   display: flex;
   gap: var(--espacio-0);
   justify-content: flex-end;
+  margin-top: var(--espacio-2);
 }
 .carrusel-botones button {
   border-radius: var(--radio-pastilla);

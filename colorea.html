@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>PINTA Y COLOREA</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/tester.css" />
+    <link rel="stylesheet" href="css/colorea.css" />
+
+    <script src="js/colorea.js"></script>
+  </head>
+
+  <body>
+    <a href="#cuerpo" class="saltar">Saltar al contenido</a>
+
+    <header class="barra">
+      <a href="index.html" class="barra-logo">Antonio M.</a>
+      <p>Pinta y colorea</p>
+      <a href="laboratorio.html">← Laboratorio</a>
+    </header>
+    <main class="cuerpo centrado" >
+      <p>TABLERO DE DIBUJO EN JAVASCRIPT</p>
+      <table
+        width="500"
+        border="1"
+        id="paleta"
+        summary="Tabla de selección de colores"
+      >
+        <caption>
+          Haga click en un color para comenzar a pintar
+        </caption>
+        <tr>
+          <td class="color1 seleccionado"></td>
+          <td class="color2"></td>
+          <td class="color3"></td>
+          <td class="color4"></td>
+          <td class="color5"></td>
+          <td class="color6"></td>
+        </tr>
+        <tr>
+          <td colspan="6" id="pincel">Estado del pincel</td>
+        </tr>
+      </table>
+      <p></p>
+      <div id="zonadibujo"></div>
+      <a href="laboratorio.html">Volver a Laboratorio</a>
+    </main>
+  </body>
+</html>
