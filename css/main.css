@@ -113,14 +113,53 @@ h1 {
 
 .boton-principal {
   align-self: flex-start;
-  background: var(--color-tinta);
+  background: var(--color-acento);
   padding: var(--espacio-1) var(--espacio-3);
   border-radius: var(--radio-pastilla);
-  border: 2px solid;
+  border: 2px solid var(--color-acento);
   text-decoration: none;
-  color: var(--color-fondo);
-  border-color: var(--color-tinta);
+  cursor: pointer;
+  color: var(--color-acento2);
 }
+
+.boton-secundario {
+  align-self: flex-start;
+  background: transparent;
+  padding: var(--espacio-1) var(--espacio-3);
+  border-radius: var(--radio-pastilla);
+  border: 2px solid currentColor;
+  text-decoration: none;
+  color: inherit;
+}
+
+.enlace-flecha {
+  font-weight: 700;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.enlace-flecha::after {
+  content: " →";
+  display: inline-block;
+  margin-left: 0.3em;
+}
+
+.enlace-flecha:hover,
+.enlace-flecha:focus-visible {
+  color: var(--color-acento);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .enlace-flecha::after {
+    transition: transform 0.2s;
+  }
+  .enlace-flecha:hover::after,
+  .enlace-flecha:focus-visible::after {
+    transform: translateX(4px);
+  }
+}
+
 .emociones-botones button {
   background: transparent;
   border: 2px solid var(--color-tinta);
@@ -138,8 +177,21 @@ h1 {
 }
 .boton-principal:hover,
 .boton-principal:focus-visible {
-  color: var(--color-tinta);
-  background-color: var(--color-fondo);
+  color: var(--color-acento);
+  background-color: transparent;
+}
+
+.boton-secundario:hover,
+.boton-secundario:focus-visible {
+  color: var(--color-fondo);
+  background-color: var(--color-tinta);
+}
+
+.boton-principal:focus-visible,
+.boton-secundario:focus-visible,
+.enlace-flecha:focus-visible {
+  outline: 3px solid var(--color-acento);
+  outline-offset: 3px;
 }
 .emociones-botones button:hover,
 .emociones-botones button:focus-visible {
