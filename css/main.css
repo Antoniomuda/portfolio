@@ -137,6 +137,7 @@ h1 {
   color: inherit;
   text-decoration: underline;
   text-underline-offset: 4px;
+  
 }
 
 .enlace-flecha::after {
@@ -226,12 +227,13 @@ h2 {
   flex-direction: column;
   gap: var(--espacio-1);
 }
+/*
 .rejilla-article img {
   width: 100%;
   height: 300px;
   object-fit: cover;
   border-radius: var(--radio-esquinas);
-}
+}*/
 .etiquetas {
   gap: var(--espacio-1);
 }
@@ -450,4 +452,65 @@ dialog::backdrop {
 }
 .caso dd > * + * {
   margin-top: var(--espacio-1);
+}
+/* ---------- Tarjeta ---------- */
+.tarjeta {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-2);
+}
+
+.tarjeta-imagen {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radio-esquinas);
+  background-color: var(--color-superficie);
+}
+
+.tarjeta-cuerpo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-1);
+}
+
+.titulo-tarjeta {
+  font-size: 24px;
+}
+
+.tarjeta-enlace {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Todo el área de la tarjeta es clicable */
+.tarjeta-enlace::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+/* Al pasar el ratón por cualquier parte, reacciona la flecha */
+.tarjeta:hover .enlace-flecha {
+  color: var(--color-acento);
+}
+
+/* El foco del teclado rodea la tarjeta entera */
+.tarjeta:has(.tarjeta-enlace:focus-visible) {
+  outline: 3px solid var(--color-acento);
+  outline-offset: 6px;
+  border-radius: var(--radio-esquinas);
+}
+.tarjeta-enlace:focus-visible {
+  outline: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .tarjeta-imagen {
+    transition: transform 0.3s;
+  }
+  .tarjeta:hover .tarjeta-imagen {
+    transform: scale(1.02);
+  }
 }
