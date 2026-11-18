@@ -241,7 +241,7 @@ h2 {
   padding: var(--espacio-2);
   border-radius: var(--radio-esquinas);
 }
-.seccion-invertida article a,
+
 .etiquetas li {
   font-size: 13px;
   border: 1.5px solid;
