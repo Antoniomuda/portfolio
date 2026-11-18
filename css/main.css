@@ -137,7 +137,6 @@ h1 {
   color: inherit;
   text-decoration: underline;
   text-underline-offset: 4px;
-  
 }
 
 .enlace-flecha::after {
@@ -470,9 +469,14 @@ dialog::backdrop {
 }
 
 .tarjeta-cuerpo {
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: var(--espacio-1);
+}
+.tarjeta-cuerpo .enlace-flecha {
+  margin-top: auto;
+  align-self: flex-start;
 }
 
 .titulo-tarjeta {
@@ -506,6 +510,14 @@ dialog::backdrop {
   outline: none;
 }
 
+.tarjeta-imagen {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  padding: var(--espacio-3);
+  background-color: var(--color-superficie);
+  border-radius: var(--radio-esquinas);
+}
 @media (prefers-reduced-motion: no-preference) {
   .tarjeta-imagen {
     transition: transform 0.3s;
