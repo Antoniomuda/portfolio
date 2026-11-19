@@ -464,6 +464,11 @@ dialog::backdrop {
   margin-top: auto;
   align-self: flex-start;
 }
+.tarjeta-cuerpo .enlace-flecha,
+.tarjeta-cuerpo .proximamente {
+  margin-top: auto;
+  align-self: flex-start;
+}
 
 .titulo-tarjeta {
   font-size: 24px;
