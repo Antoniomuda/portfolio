@@ -87,6 +87,12 @@
   --interlineado: 1.5;
 
   --muestra-tamano: 96px;
+
+  --titulo-1: clamp(48px, 7vw, 112px);
+
+  --titulo-2: clamp(32px, 3.5vw, 52px);
+
+  --titulo-3: clamp(20px, 1.6vw, 24px);
 }
 
 [data-tema="alegria"] {
