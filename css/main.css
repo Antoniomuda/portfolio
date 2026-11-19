@@ -205,12 +205,12 @@ h1 {
   border-top: 2px solid var(--color-tinta);
   display: flex;
   flex-direction: column;
-  gap: var(--espacio-5);
+  gap: var(--espacio-4);
 }
 .cabecera-seccion {
   display: flex;
   flex-direction: column;
-  gap: var(--espacio-2);
+  gap: var(--espacio-1);
 }
 h2 {
   font-size: var(--titulo-2);
@@ -510,5 +510,74 @@ dialog::backdrop {
   }
   .tarjeta:hover .tarjeta-imagen {
     transform: scale(1.02);
+  }
+}
+
+/* ---------- Con qué trabajo ---------- */
+.stack {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--espacio-3);
+}
+.stack-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-2);
+  padding: var(--espacio-3);
+  border-radius: var(--radio-esquinas);
+  background-color: var(--color-fondo);
+  box-shadow:
+    inset 0 0 32px color-mix(in srgb, var(--color-tinta) 14%, transparent),
+    inset 0 0 0 1px color-mix(in srgb, var(--color-tinta) 10%, transparent);
+}
+.stack-grupo h3 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+@media (max-width: 700px) {
+  .stack {
+    grid-template-columns: 1fr;
+  }
+}
+/* ---------- Línea de tiempo ---------- */
+.linea-tiempo {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-3);
+  max-width: 70ch;
+  padding-left: var(--espacio-3);
+  border-left: 2px solid var(--color-tinta);
+}
+.linea-tiempo li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 11ch 1fr;
+  gap: var(--espacio-2);
+}
+.linea-tiempo li::before {
+  content: "";
+  position: absolute;
+  left: calc(-1 * var(--espacio-3) - 7px);
+  top: 0.35em;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--color-acento);
+}
+.fechas {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.linea-tiempo h3 {
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+@media (max-width: 600px) {
+  .linea-tiempo li {
+    grid-template-columns: 1fr;
+    gap: var(--espacio-0);
   }
 }
