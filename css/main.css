@@ -56,13 +56,57 @@ header {
   color: inherit;
 }
 
-.menu,
-.idiomas,
 .etiquetas {
   list-style: none;
   display: flex;
   gap: var(--espacio-2);
   flex-wrap: wrap;
+}
+/* ---------- Menú ---------- */
+.menu {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--espacio-3);
+}
+
+.menu a {
+  padding-block: 6px;
+  color: inherit;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.menu li:not(.menu-contacto) a::before {
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-acento);
+}
+
+.menu a:hover,
+.menu a[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-color: var(--color-acento);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+.menu-contacto a {
+  padding: 6px 16px;
+  border: 2px solid currentColor;
+  border-radius: var(--radio-pastilla);
+}
+.menu-contacto a:hover,
+.menu-contacto a[aria-current="page"] {
+  text-decoration: none;
+  background-color: var(--color-tinta);
+  color: var(--color-fondo);
+}
+
+.menu a:focus-visible {
+  outline: 3px solid var(--color-acento);
+  outline-offset: 4px;
 }
 
 .menu a,
